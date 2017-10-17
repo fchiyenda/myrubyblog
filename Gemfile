@@ -10,6 +10,7 @@ ruby '2.2.2'
 gem 'rails', '~> 5.0.5'
 # Use sqlite3 as the database for Active Record
 gem 'mysql2'
+gem 'activeadmin'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
