@@ -23,7 +23,7 @@ development:
 test:
   <<: *default
   adapter: mysql2 
-  database: myrubyblog
+  database: myrubyblog_test
   username: fchiyenda
   password: E21081988g
   host: localhost
