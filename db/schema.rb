@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171017180303) do
+ActiveRecord::Schema.define(version: 20171231141118) do
 
   create_table "active_admin_comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "namespace"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 20171017180303) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "name"
     t.index ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
   end
@@ -49,13 +50,24 @@ ActiveRecord::Schema.define(version: 20171017180303) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "title"
-    t.text     "body",        limit: 65535
-    t.integer  "category_id"
-    t.integer  "author_id"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+  create_table "post_comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.string   "email"
+    t.text     "body",       limit: 65535
+    t.integer  "post_id"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.index ["post_id"], name: "index_post_comments_on_post_id", using: :btree
   end
 
+  create_table "posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "title"
+    t.text     "body",          limit: 65535
+    t.integer  "category_id"
+    t.integer  "admin_user_id"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  add_foreign_key "post_comments", "posts"
 end

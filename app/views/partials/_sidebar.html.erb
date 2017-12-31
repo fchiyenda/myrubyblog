@@ -1,0 +1,32 @@
+ <div id="sidebar">
+          <ul>
+            <li>
+              <div id="search">
+                <%= search_form_for @q do |f| %>
+                <%= f.text_field :title_or_body_contains %>
+                <%= f.submit "Search" %>
+                <% end %> 
+              </div>
+              <div style="clear: both;">&nbsp;</div>
+            </li>
+            <li>
+              <h2>Categories</h2>
+              <ul>
+                <% all_categories.each do |cat| %>
+                  <li><%= cat.name %></li>
+                <% end %>
+              </ul>
+            </li>
+            <li>
+              <h2>Blogroll</h2>
+              <ul>
+                <li><a href="#">Blog Post</a></li>
+                <li><a href="#">Blog Post</a></li>
+                <li><a href="#">Blog Post</a></li>
+                <li><a href="#">Blog Post</a></li>
+                <li><a href="#">Blog Post</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <!-- end of #sidebar -->
